@@ -1,23 +1,33 @@
+import webbrowser
+
+
 def command(text):
-    cmd_dict = {
-        "open google": open_google,
-        "open excel": open_excel,
-        "play music": play_music,
-    }
-    cmd = cmd_dict.get(text)
-    return cmd() if cmd else None
+    cmd = text.replace(" ", "_")
+    try:
+        return eval(cmd)()
+    except Exception as e:
+        return e
+
+
+def open_site():
+    try:
+        webbrowser.open("http://alvinccruz.pythonanywhere.com/")
+        return "Personal site opened."
+    except Exception as e:
+        return e
 
 
 def open_google():
-    print("Opening google.")
-    return "Opening google."
+    try:
+        webbrowser.open("https://google.com")
+        return "Google opened."
+    except Exception as e:
+        return e
 
 
-def open_excel():
-    print("Opening Excel")
-    return "Opening Excel"
-
-
-def play_music():
-    print("Playing music.")
-    return "Playing music."
+def open_github():
+    try:
+        webbrowser.open("https://github.com")
+        return "Github opened."
+    except Exception as e:
+        return e
